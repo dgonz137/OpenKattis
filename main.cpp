@@ -1,24 +1,29 @@
 #include <iostream>
-#include <cmath>
-
-using namespace std;
 
 int main()
 {
-      int n;
-    cin >> n;
-    int arr[n];
-    long long x = 0;
-    int tmp;
-    int base;
-    int exp;
+    int n, currElement, prev, totalDiff;
 
-    while(n--){
-        cin >> tmp;
-        base = tmp / 10;
-        exp = tmp % 10;
-        x += pow(base,exp);
+    std::cin >> n;
+
+    for(int i = 0; i < n; i++)
+    {
+        totalDiff = 0, currElement = 1, prev = 1;
+
+        while(currElement != 0)
+        {
+            std::cin >> currElement;
+
+            if(currElement > prev * 2)
+            {
+                totalDiff += currElement - (prev * 2);
+            }
+
+            prev = currElement;
+        }
+
+        std::cout << totalDiff << std::endl;
     }
-    cout << x;
+
     return 0;
 }
